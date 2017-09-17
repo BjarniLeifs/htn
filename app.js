@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
+const jwtCheck = require('express-jwt');
 /* Sockets */
 var io = require('socket.io')(http);
 
