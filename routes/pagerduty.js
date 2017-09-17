@@ -15,7 +15,7 @@ router.post('/incident', function(req, res, next) {
   if (!req.body.image) {
     return res.status(400).json({message: 'please provide incident details'});
   }
-  
+  req.io.emit('notification', { title: req.body.title , image: req.body.image});
   // Set the headers
   var headers = {
     "Content-Type": "application/json",
@@ -52,12 +52,6 @@ router.post('/incident', function(req, res, next) {
   });
 });
 
-router.post('/notification', function(req, res, next) {
-  req.io.emit('welcome', { message: 'Welcome!'});
-  // req.body.id, req.body.type, req.body.created_on, req.body.data
-  //let token = jwttoken.decodeJWT(req);
 
-
-});
   
 module.exports = router;
