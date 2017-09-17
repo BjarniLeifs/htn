@@ -58,9 +58,9 @@ router.post('/notification', function(req, res, next) {
   //let token = jwttoken.decodeJWT(req);
   let insertObject = {
     UserId: 'PS337ZU',//token.userid,
-    ImageURL: req.body.data.incident.body.details,
-    ServiceId: req.body.data.incident.service.id,
-    CreatedOn: req.body.data.incident.created_on
+    ImageURL: 'test', //req.body.data.incident.body.details,
+    ServiceId: 'test',req.body.data.incident.service.id,
+    CreatedOn: '324',req.body.data.incident.created_on
   };
 
   pagerdutyService.create(insertObject,
