@@ -7,8 +7,7 @@ var io = require('socket.io')(http);
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var users = require('./routes/users');
-var authentication = require('./routes/authentication');
+
 /* Sockets */
 var newIo = io.of('(/test');
 
@@ -16,11 +15,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser())
 /* routes  */
-app.use('/api/v1/users', users);
-app.use('/api/v1/auth', authentication)
+app.use('/api/v1/users', require('./routes/users'));
+app.use('/api/v1/auth', require('./routes/authentication'));
+app.use('api/v1/pagerduty', require('./routes/pagerduty'));
+
 /* Sockets */
 /* Who is what and where to connect. */
 var connections = {};
+
 newIo.on('connection', function(socket){
 	socket.on('username', function(username) {
 		connections[username] = socket;

@@ -25,7 +25,7 @@ module.exports = {
 			 password or other sensitive information.
 			*/
 			userid 	: object.ID,
-			pagerdutyid : object.PagerdutyId
+			pagerdutyid : object.PagerdutyId,
 			username: object.Username,
 			name 	: object.Name,	
 			scopes  : scopes,
