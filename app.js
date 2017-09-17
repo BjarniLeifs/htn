@@ -13,11 +13,11 @@ var newIo = io.of('(/test');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser())
+app.use(cookieParser());
 /* routes  */
 app.use('/api/v1/users', require('./routes/users'));
-app.use('/api/v1/auth', require('./routes/authentication'));
-app.use('api/v1/pagerduty', require('./routes/pagerduty'));
+app.use('/api/auth', require('./routes/authentication'));
+app.use('/api/v1/pagerduty', require('./routes/pagerduty'));
 
 /* Sockets */
 /* Who is what and where to connect. */
