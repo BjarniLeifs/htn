@@ -69,7 +69,7 @@ router.post('/notification', function(req, res, next) {
             .json({ message: result.message });
       else {
         /* what is it that should be sent here. ??? */
-        req.io.emit('welcome', { message: 'Welcome!'});
+        req.io.emit('notification', result.data);
         return res.status(result.status)
             .json( result.data );
       }
