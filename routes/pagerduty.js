@@ -53,6 +53,7 @@ router.post('/incident', function(req, res, next) {
 });
 
 router.post('/notification', function(req, res, next) {
+  req.io.emit('welcome', { message: 'Welcome!', data: result.data});
   // req.body.id, req.body.type, req.body.created_on, req.body.data
   let token = jwttoken.decodeJWT(req);
   let insertObject = {
