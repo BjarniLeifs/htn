@@ -33,7 +33,7 @@ app.use('/api/v1',jwtCheck({
 }));
 
 /* routes  */
-app.use('/api/v1/users', require('./routes/users'));
+app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/authentication'));
 app.use('/api/v1/pagerduty', require('./routes/pagerduty'));
 
