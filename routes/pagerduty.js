@@ -32,7 +32,7 @@ router.post('/incident', function(req, res, next) {
       form: {
         'incident': {
           'type': 'incident',
-          'title': req.body.title + " ||DELIMTER|| " + req.body.image,
+          'title': req.body.title + " ||DELIMITER|| " + req.body.image,
           'service': {
             'id': 'PS337ZU', //token.pagerdutyid,
             'type': 'service_reference'
