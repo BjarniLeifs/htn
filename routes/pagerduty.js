@@ -57,7 +57,7 @@ router.post('/notification', function(req, res, next) {
   // req.body.id, req.body.type, req.body.created_on, req.body.data
   //let token = jwttoken.decodeJWT(req);
   let insertObject = {
-    UserId: 'PS337ZU'//token.userid,
+    UserId: 'PS337ZU',//token.userid,
     ImageURL: req.body.data.incident.body.details,
     ServiceId: req.body.data.incident.service.id,
     CreatedOn: req.body.data.incident.created_on
