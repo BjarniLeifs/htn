@@ -1,4 +1,3 @@
-#!/usr/bin/env nodejs
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -20,15 +19,10 @@ io.on('connection', function(socket){
   console.log('a user connected');
 });
 
-http.createServer(app).listen(8080, function(err) {
-  if (err) {
-    console.log(err);
-  } else {
-    const host = server.address().address;
-    const port = server.address().port;
-    console.log(`Server listening on ${host}:${port}`);
-  }
-});
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello World\n');
+}).listen(8080, 'localhost');
 console.log('Server running at http://localhost:8080/');
 
 
