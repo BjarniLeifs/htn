@@ -15,7 +15,7 @@ router.post('/incident', function(req, res, next) {
   if (!req.body.image) {
     return res.status(400).json({message: 'please provide incident details'});
   }
-  
+  req.io.emit('notification', { 'title': req.body.title , 'image': req.body.image});
   // Set the headers
   var headers = {
     "Content-Type": "application/json",
@@ -52,28 +52,6 @@ router.post('/incident', function(req, res, next) {
   });
 });
 
-router.post('/notification', function(req, res, next) {
-  // req.body.id, req.body.type, req.body.created_on, req.body.data
-  let token = jwttoken.decodeJWT(req);
-  let insertObject = {
-    UserId: token.userid,
-    ImageURL: req.body.data.incident.body.details,
-    ServiceId: req.body.data.incident.service.id,
-    CreatedOn: req.body.data.incident.created_on
-  };
 
-  pagerdutyService.create(insertObject,
-    (err, result) => {
-      if (err)
-        return res.status(result.status)
-            .json({ message: result.message });
-      else {
-        req.io.emit('welcome', { message: 'Welcome!'});
-        return res.status(result.status)
-            .json( result.data );
-      }
-    });
-  console.log(req.body);
-});
   
 module.exports = router;

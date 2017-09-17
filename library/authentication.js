@@ -15,6 +15,7 @@ module.exports = {
 		exp.setDate(today.getDate() + 4);
 		
 		scopes.push('user');
+		
 
 		/* Sign the token and return it. */
 		return jwt.sign({
@@ -23,10 +24,11 @@ module.exports = {
 			 the token and use for what ever we want. Pease do not send
 			 password or other sensitive information.
 			*/
-			userid 		: object.ID,
-			pagerdutyid : object.PagerdutyId,
+			userid 		: object.id,
+			pagerdutyid : object.pagerdutyid,
+			email 		: object.email,
 			username 	: object.Username,
-			name 		: object.Name,	
+			name 		: object.name,	
 			scopes  	: scopes,
 			exp 		: parseInt(exp.getTime() /1000)
 		}, 

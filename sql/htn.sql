@@ -13,6 +13,6 @@ CREATE TABLE Notifications (
   UserId integer,
   ImageURL character varying,
   ServiceId character varying,
-  CreatedOn chracter varying,
+  CreatedOn character varying,
   PRIMARY KEY(ID)
 );
