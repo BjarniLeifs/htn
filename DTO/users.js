@@ -1,7 +1,8 @@
 module.exports = {
-	DTO : (id, name, email, username) => { 
+	DTO : (id, pid, name, email, username) => { 
 		return {
 			ID 			 : id,
+			PagerdutyId  : pid,
 			Name 		 : name,
 			Email 		 : email,
 			Username 	 : username,

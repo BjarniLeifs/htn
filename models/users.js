@@ -8,7 +8,7 @@ function DTO (data) {
     */
     let object = [];
     for (var i = 0; i < data.length; i++)
-      object.push(users.DTO(data[i].id, data[i].name, data[i].email, data[i].username));
+      object.push(users.DTO(data[i].id, data[i].pagerdutyid, data[i].name, data[i].email, data[i].username));
 
     return object;
 
@@ -53,7 +53,7 @@ function User() {
     "use strict";
     let table  = 'users';
     let string = 'SELECT * FROM '+ table + ' WHERE id = $1';
-    let value  = [id]
+    let value  = [id];
 
     dbService.queryStringValue(string, value, 
       (err, result) => {
@@ -81,7 +81,37 @@ function User() {
     );  
   };
 
+  this.getUserByPagerdutyID = (pid, callback) => {
+    "use strict";
+    let table  = 'users';
+    let string = 'SELECT * FROM '+ table + ' WHERE pagerdutyid = $1';
+    let value  = [pid];
 
+    dbService.queryStringValue(string, value, 
+      (err, result) => {
+        if (err)
+          callback(err, 
+            { 
+              valid   : false,
+              status  : 404,
+              Type    : 'Getting users by id.',
+              err     : err,
+              data    : null,
+              Message : 'Failed to get the users by id'
+            }); 
+        else
+          callback(err, 
+            { 
+              valid   : true,
+              status  : 200,
+              Type    : 'Getting the users by type id.',
+              err     : err,
+              data    : DTO(result),
+              Message : 'Returned users by type id.'
+            });
+      }
+    );  
+  };
 
   this.delete = (id, callback) => {
     "use strict";
