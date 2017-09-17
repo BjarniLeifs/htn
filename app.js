@@ -35,6 +35,12 @@ newIo.on('connection', function(socket){
   console.log('a user connected');
 });
 
+app.use(function (err, req, res, next) {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+});
+
+
 http.listen(8080, function(req, res){
     console.log('listening on port 8080');
   });

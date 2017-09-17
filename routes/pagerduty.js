@@ -7,6 +7,7 @@ var querystring = require('querystring');
 var http = require('http');
 
 router.post('/incident', function(req, res, next) {
+
   if (!req.body.title) {
     return res.status(400).json({message: 'please provide an incident title'});
   }
@@ -14,7 +15,7 @@ router.post('/incident', function(req, res, next) {
     return res.status(400).json({message: 'please provide incident details'});
   }
 
-  var token = authentication.decodeJWT(req);
+  //var token = authentication.decodeJWT(req);
 
   // Build the post string from an object
   var post_data = querystring.stringify({
@@ -22,7 +23,7 @@ router.post('/incident', function(req, res, next) {
       'type': 'incident',
       'title': req.body.title,
       'service': {
-        'id': token.pagerdutyid,
+        'id': 'PS337ZU',//token.pagerdutyid,
         'type': 'service_reference'
       },
       'body': {
@@ -41,7 +42,7 @@ router.post('/incident', function(req, res, next) {
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/vnd.pagerduty+json;version=2",
-        "From": token.email,
+        "From": "bjarnil10@ru.is", //token.email,
         "Authorization": "Token token=" + access.pagerdutyid
       }
   };
