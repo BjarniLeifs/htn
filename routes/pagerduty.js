@@ -59,8 +59,8 @@ router.post('/notification', function(req, res, next) {
   let insertObject = {
     UserId: 'PS337ZU',//token.userid,
     ImageURL: 'test', //req.body.data.incident.body.details,
-    ServiceId: 'test',req.body.data.incident.service.id,
-    CreatedOn: '324',req.body.data.incident.created_on
+    ServiceId: 'test',//req.body.data.incident.service.id,
+    CreatedOn: '324',//req.body.data.incident.created_on
   };
 
   pagerdutyService.create(insertObject,
