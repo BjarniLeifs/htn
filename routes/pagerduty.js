@@ -15,7 +15,7 @@ router.post('/incident', function(req, res, next) {
   if (!req.body.image) {
     return res.status(400).json({message: 'please provide incident details'});
   }
-  req.io.emit('notification', { title: req.body.title , image: req.body.image});
+  req.io.emit('notification', { 'title': req.body.title , 'image': req.body.image});
   // Set the headers
   var headers = {
     "Content-Type": "application/json",
