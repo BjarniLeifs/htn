@@ -53,28 +53,10 @@ router.post('/incident', function(req, res, next) {
 });
 
 router.post('/notification', function(req, res, next) {
-  req.io.emit('welcome', { message: 'Welcome!', data: result.data});
+  req.io.emit('welcome', { message: 'Welcome!'});
   // req.body.id, req.body.type, req.body.created_on, req.body.data
   //let token = jwttoken.decodeJWT(req);
-  let insertObject = {
-    UserId: 'PS337ZU',//token.userid,
-    ImageURL: 'test', //req.body.data.incident.body.details,
-    ServiceId: 'test',//req.body.data.incident.service.id,
-    CreatedOn: '324',//req.body.data.incident.created_on
-  };
 
-  pagerdutyService.create(insertObject,
-    (err, result) => {
-      if (err)
-        return res.status(result.status)
-            .json({ message: result.message });
-      else {
-        /* what is it that should be sent here. ??? */
-        req.io.emit('notification', { message: 'Welcome!'});
-        return res.status(result.status)
-            .json( result.data );
-      }
-    });
 
 });
   
