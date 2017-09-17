@@ -7,3 +7,12 @@ CREATE TABLE Users (
   Hash character varying,
   PRIMARY KEY(ID)
 );
+
+CREATE TABLE Notifications (
+  ID SERIAL,
+  UserId integer,
+  ImageURL character varying,
+  ServiceId character varying,
+  CreatedOn chracter varying,
+  PRIMARY KEY(ID)
+);

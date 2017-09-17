@@ -46,11 +46,18 @@ router.post('/incident', function(req, res, next) {
   // Start the request
   request(options, function (error, response, body) {
       if (!error) {
-          // Print out the response body
-          return res.status(203).json(body);
+        // Print out the response body
+        return res.status(203).json(body);
       } else {
         return res.status(400).json(error);
       }
   });
 });
+
+router.post('/notification', function(req, res, next) {
+  // req.body.id, req.body.type, req.body.created_on, req.body.data
+  
+  console.log(req.body);
+});
+  
 module.exports = router;
