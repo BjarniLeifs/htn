@@ -32,12 +32,12 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-
+/*
 app.use('/api/v1',jwtCheck({
   secret: access.secret,
   userProperty: access.payload
 }));
-
+*/
 /* routes  */
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/authentication'));
