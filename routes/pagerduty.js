@@ -69,12 +69,12 @@ router.post('/notification', function(req, res, next) {
             .json({ message: result.message });
       else {
         /* what is it that should be sent here. ??? */
-        req.io.emit('notification', result.data);
+        req.io.emit('notification', { message: 'Welcome!', data: result.data});
         return res.status(result.status)
             .json( result.data );
       }
     });
-  console.log(req.body);
+
 });
   
 module.exports = router;
