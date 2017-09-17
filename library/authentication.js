@@ -9,7 +9,6 @@ module.exports = {
 	*/
 	generateJWT: (object) => {
 		/* Set expirateion to 4 days. */
-		console.log(object);
 		let today = new Date();
 		let exp = new Date(today);
 		let scopes = [];
@@ -24,12 +23,12 @@ module.exports = {
 			 the token and use for what ever we want. Pease do not send
 			 password or other sensitive information.
 			*/
-			userid 	: object.ID,
+			userid 		: object.ID,
 			pagerdutyid : object.PagerdutyId,
-			username: object.Username,
-			name 	: object.Name,	
-			scopes  : scopes,
-			exp 	: parseInt(exp.getTime() /1000)
+			username 	: object.Username,
+			name 		: object.Name,	
+			scopes  	: scopes,
+			exp 		: parseInt(exp.getTime() /1000)
 		}, 
 		access.secret);
 	},
