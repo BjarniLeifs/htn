@@ -19,10 +19,9 @@ io.on('connection', function(socket){
   console.log('a user connected');
 });
 
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World\n');
-}).listen(8080, 'localhost');
+http.listen(8080, function(req, res){
+    console.log('listening on port 8080');
+  });
 console.log('Server running at http://localhost:8080/');
 
 
